@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
+import 'connect.dart';
 
-main() => runApp(WireColur());
+void main() => runApp(MaterialApp(
+      title: "App",
+      home: WireColur(),
+    ));
 
 class WireColur extends StatelessWidget {
-  var buttons = [
-    ElevatedButton(
-      child: Text('Repeat last Wire\'s colour'),
-      onPressed: null,
-    ),
-    ElevatedButton(
-      child: Text('Options'),
-      onPressed: null,
-    ),
-    ElevatedButton(child: Text('connect'), onPressed: null)
-  ];
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Wire Colour'),
-        ),
-        body: Column(
-          children: buttons,
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Wire Colour'),
+      ),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+          child: ElevatedButton(
+              child: Text('connect'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ConnectMenu()),
+                );
+              }),
         ),
       ),
     );
